@@ -3,7 +3,6 @@
 site:
   title: CNSA
   url: https://ualjjcanada.github.io/cicd
-  start_page: despliegue-continuo::index.adoc
 content:
   sources:
   - url: git@github.com:ualjjcanada/despliegue-continuo.git

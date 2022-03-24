@@ -148,23 +148,24 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>En la carpeta JENKINS_HOME (si no recuerdas cual es, la predeterminada es <code>/var/lib/jenkins</code>, puedes verla en <a href="http://fake">http://<em>mi-jenkins-url</em>/systemInfo</a>) crea una carpeta <code>selenium-drivers</code> y descarga ahí los drivers de los navegadores Firefox y Chrome para Ubuntu. Para ello, ejecuta los siguientes comandos en la máquina Jenkins.</p>
+<p>En la carpeta JENKINS_HOME (si no recuerdas cual es, la predeterminada es <code>/var/jenkins_home</code>, puedes verla en <a href="http://fake">http://<em>mi-jenkins-url</em>/systemInfo</a>) crea una carpeta <code>selenium-drivers</code> y descarga ahí los drivers de los navegadores Firefox y Chrome para Ubuntu. Para ello, ejecuta los siguientes comandos en la máquina Jenkins.</p>
 </li>
 </ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd
-JENKINS_HOME=/var/lib/jenkins <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker exec -it jenkins-docker bash <i class="conum" data-value="1"></i><b>(1)</b>
+cd
+JENKINS_HOME=/var/jenkins_home <i class="conum" data-value="2"></i><b>(2)</b>
 echo $JENKINS_HOME
-mkdir $JENKINS_HOME/selenium-drivers <i class="conum" data-value="2"></i><b>(2)</b>
+mkdir $JENKINS_HOME/selenium-drivers <i class="conum" data-value="3"></i><b>(3)</b>
 wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
-sudo tar -C $JENKINS_HOME/selenium-drivers/ -xvf geckodriver-v0.29.1-linux64.tar.gz <i class="conum" data-value="3"></i><b>(3)</b>
-wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip <i class="conum" data-value="4"></i><b>(4)</b>
+sudo tar -C $JENKINS_HOME/selenium-drivers/ -xvf geckodriver-v0.29.1-linux64.tar.gz <i class="conum" data-value="4"></i><b>(4)</b>
+wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip <i class="conum" data-value="5"></i><b>(5)</b>
 sudo apt-get install unzip -y
-sudo unzip chromedriver_linux64.zip -d $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="5"></i><b>(5)</b>
-ls -la  $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="6"></i><b>(6)</b>
-sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="7"></i><b>(7)</b>
+sudo unzip chromedriver_linux64.zip -d $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="6"></i><b>(6)</b>
+ls -la  $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="7"></i><b>(7)</b>
+sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="8"></i><b>(8)</b>
 sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/*</code></pre>
 </div>
 </div>
@@ -172,30 +173,34 @@ sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/*</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Declara la variable de entorno <code>JENKINS_HOME</code></td>
+<td>Ejecuta una consola en tu contenedor jenkins-docker</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Crea la carpeta donde guardar los drivers de los navegadores. Asegúrate que tienes permisos suficientes. Si necesitas usar <code>sudo</code>, deberás de cambiar los permisos y grupos de los archivos al usuario <code>jenkins:jenkins</code> (ver paso 6).</td>
+<td>Declara la variable de entorno <code>JENKINS_HOME</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Con <code>wget</code> descarga <code>geckodriver</code> para linux en la carpeta home, y con <code>tar -xvf</code> descomprime en la carpeta deseada.</td>
+<td>Crea la carpeta donde guardar los drivers de los navegadores. Asegúrate que tienes permisos suficientes. Si necesitas usar <code>sudo</code>, deberás de cambiar los permisos y grupos de los archivos al usuario <code>jenkins:jenkins</code> (ver paso 7).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Con <code>wget</code> descarga <code>chromedriver</code> para linux en la carpeta home, pero antes revisa la <a href="https://www.ubuntuupdates.org/package/google_chrome/stable/main/base/google-chrome-stable">última versión estable</a> de Chrome para Ubuntu y usa la <a href="https://chromedriver.chromium.org/downloads">URL de descarga</a> de <code>chromedriver_linux64.zip</code> adecuada para la versión estable de Chrome</td>
+<td>Con <code>wget</code> descarga <code>geckodriver</code> para linux en la carpeta home, y con <code>tar -xvf</code> descomprime en la carpeta deseada.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Con <code>unzip</code> descomprime en la carpeta deseada. Además has tenido que instalar <code>unzip</code></td>
+<td>Con <code>wget</code> descarga <code>chromedriver</code> para linux en la carpeta home, pero antes revisa la <a href="https://www.ubuntuupdates.org/package/google_chrome/stable/main/base/google-chrome-stable">última versión estable</a> de Chrome para Ubuntu y usa la <a href="https://chromedriver.chromium.org/downloads">URL de descarga</a> de <code>chromedriver_linux64.zip</code> adecuada para la versión estable de Chrome</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Lista los archivos en la carpeta <code>selenium-drivers</code>. Comprueba que los permisos no son adecuados para que Jenkins pueda lanzar los ejecutables de los drivers.</td>
+<td>Con <code>unzip</code> descomprime en la carpeta deseada. Además has tenido que instalar <code>unzip</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Lista los archivos en la carpeta <code>selenium-drivers</code>. Comprueba que los permisos no son adecuados para que Jenkins pueda lanzar los ejecutables de los drivers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td>Asigna el grupo <code>jenkins:jenkins</code> a la carpeta y los archivos. Como resultado los archivos deben tener los permisos correctos</td>
 </tr>
 </table>
@@ -209,14 +214,71 @@ sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/*</code></pre>
 <div class="olist arabic">
 <ol class="arabic" start="2">
 <li>
-<p>Instala <code>firefox</code> en tu máquina Jenkins. También deberás instalar <code>xvfb</code> que hace de <a href="http://elementalselenium.com/tips/38-headless">entorno de visualización simulado</a> para ejecutar los tests <em>headeless</em> de Selenium. Recuerda que la maquina Jenkins no tiene una interfaz gráfica, así que aunque firefox se va a ejecutar en modo <em>headless</em>, es necesario tener un entorno de visualización simulado, y esto lo proporciona <code>xvfb</code>.</p>
-<div class="literalblock">
-<div class="content">
-<pre>sudo apt-get install -y  xvfb firefox</pre>
-</div>
-</div>
+<p>Instala <code>firefox</code> en tu contenedor Jenkins. También deberás instalar <code>xvfb</code> que hace de <a href="http://elementalselenium.com/tips/38-headless">entorno de visualización simulado</a> para ejecutar los tests <em>headeless</em> de Selenium. Recuerda que la maquina Jenkins no tiene una interfaz gráfica, así que aunque firefox se va a ejecutar en modo <em>headless</em>, es necesario tener un entorno de visualización simulado, y esto lo proporciona <code>xvfb</code>.</p>
 </li>
 </ol>
+</div>
+<div class="listingblock">
+<div class="title">Dockerfile</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-docker hljs" data-lang="docker">FROM jenkins/jenkins:lts
+
+USER root
+
+RUN apt-get update &amp;&amp; \
+apt-get -y install apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common &amp;&amp; \
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \
+add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+    $(lsb_release -cs) \
+    stable" &amp;&amp; \
+  apt-get update &amp;&amp; \
+  apt-get -y install docker-ce
+
+RUN apt-get install -y docker-ce
+
+RUN usermod -a -G docker jenkins
+
+RUN apt-get -y install xvfb firefox <i class="conum" data-value="1"></i><b>(1)</b>
+
+USER jenkins</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Añadimos la instalación de xvfb y firefox</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Construimos la imagen a partir del Dockerfile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker build --tag <strong>ualjjcanada</strong>/jenkins-docker:1.0 . <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Sustituye <strong>ualjjcanada/</strong> por tu usuario de Dockerhub si estás registrado, si no simplemente no lo pongas.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Reinicia el contenedor para aplicar los cambios:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker restart jenkins-docker</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">

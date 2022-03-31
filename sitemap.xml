@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
-<loc>https://ualjjcanada.github.io/cicd/sitemap-despliegue-continuo.xml</loc>
+<loc>https://ualcnsa.github.io/cicd/sitemap-despliegue-continuo.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://ualjjcanada.github.io/cicd/sitemap-github-actions.xml</loc>
+<loc>https://ualcnsa.github.io/cicd/sitemap-github-actions.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://ualjjcanada.github.io/cicd/sitemap-selenium-testing.xml</loc>
+<loc>https://ualcnsa.github.io/cicd/sitemap-selenium-testing.xml</loc>
 </sitemap>
 </sitemapindex>

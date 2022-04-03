@@ -30,6 +30,7 @@ asciidoc:
     example-caption!:
 #    source-highlighter: rouge   ## not supported
 #    rouge-linenums-mode: inline  ## not supported
+    page-component-sort-order: despliegue-continuo, selenium-testing, github-actions
 antora:
   extensions:
   - require: '@antora/lunr-extension'

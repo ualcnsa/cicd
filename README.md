@@ -68,3 +68,6 @@ Install the http-server package globally using npm: `npm i -g http-server`
 - Error, on Windows: `npm ERR! Unexpected token '.'`
 
 *[Solution](https://github.com/npm/cli/issues/4234#issuecomment-1058261100):*  I had this issue with Node 16.14.0 and NPM 8.3.1. But the real issue was with NVM. I had NVM 1.1.7 but updated to the latest which is currently 1.1.9. Then run `nvm uninstall 16.14.0` followed by `nvm install 16.14.0` and of course `nvm use 16.14.0`
+
+## Sort and hide components and versions
+ - Sort components: https://blog.yuzutech.fr/sort-antora-components/

@@ -27,9 +27,10 @@ jobs:
           apk update && apk add git rsync
 
       - name: Configure git to trust the workspace despite the different owner
-        run:
+        run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
+          git config --global --add safe.directory /__w/cicd/cicd/github-pages-deploy-action-temp-deployment-folder
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 

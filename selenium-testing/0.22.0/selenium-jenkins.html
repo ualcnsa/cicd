@@ -169,14 +169,12 @@ cd
 JENKINS_HOME=/var/jenkins_home <i class="conum" data-value="2"></i><b>(2)</b>
 echo $JENKINS_HOME
 mkdir $JENKINS_HOME/selenium-drivers <i class="conum" data-value="3"></i><b>(3)</b>
-wget https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz
-sudo tar -C $JENKINS_HOME/selenium-drivers/ -xvf geckodriver-v0.29.1-linux64.tar.gz <i class="conum" data-value="4"></i><b>(4)</b>
-wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip <i class="conum" data-value="5"></i><b>(5)</b>
-sudo apt-get install unzip -y
-sudo unzip chromedriver_linux64.zip -d $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="6"></i><b>(6)</b>
-ls -la  $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="7"></i><b>(7)</b>
-sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="8"></i><b>(8)</b>
-sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/*</code></pre>
+cd /tmp
+curl -L https://github.com/mozilla/geckodriver/releases/download/v0.29.1/geckodriver-v0.29.1-linux64.tar.gz -o geckodriver-v0.29.1-linux64.tar.gz
+tar -C $JENKINS_HOME/selenium-drivers/ -xvf geckodriver-v0.29.1-linux64.tar.gz <i class="conum" data-value="4"></i><b>(4)</b>
+curl -L https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip -o chromedriver_linux64.zip <i class="conum" data-value="5"></i><b>(5)</b>
+unzip chromedriver_linux64.zip -d $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="6"></i><b>(6)</b>
+ls -la  $JENKINS_HOME/selenium-drivers/ <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -208,10 +206,6 @@ sudo chown jenkins:jenkins $JENKINS_HOME/selenium-drivers/*</code></pre>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>Lista los archivos en la carpeta <code>selenium-drivers</code>. Comprueba que los permisos no son adecuados para que Jenkins pueda lanzar los ejecutables de los drivers.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Asigna el grupo <code>jenkins:jenkins</code> a la carpeta y los archivos. Como resultado los archivos deben tener los permisos correctos</td>
 </tr>
 </table>
 </div>
@@ -253,7 +247,7 @@ RUN apt-get install -y docker-ce
 
 RUN usermod -a -G docker jenkins
 
-RUN apt-get -y install xvfb firefox <i class="conum" data-value="1"></i><b>(1)</b>
+RUN apt-get -y install xvfb firefox-esr <i class="conum" data-value="1"></i><b>(1)</b>
 
 USER jenkins</code></pre>
 </div>

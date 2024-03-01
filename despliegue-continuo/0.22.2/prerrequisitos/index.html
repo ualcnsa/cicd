@@ -7,7 +7,6 @@
     <link rel="canonical" href="https://ualcnsa.github.io/cicd/despliegue-continuo/0.22.2/prerrequisitos/index.html">
     <meta name="generator" content="Antora 3.0.1">
     <link rel="stylesheet" href="../../../_/css/site.css">
-    <script>var uiRootPath = '../../../_'</script>
   </head>
   <body class="article">
 <header class="header">
@@ -39,6 +38,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
     <h3 class="title"><a href="../index.html">Despliegue continuo con Jenkins</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -160,8 +160,8 @@
     <li><a href="index.html">Prerrequisitos</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ualjjcanada/despliegue-continuo/edit/v.0.22/docs/modules/prerrequisitos/pages/index.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/ualjjcanada/despliegue-continuo/edit/v.0.22/docs/modules/prerrequisitos/pages/index.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
@@ -183,7 +183,7 @@
 <p>Linux y Mac: el <strong>terminal del S.O</strong> incluye todas las herramientas básicas necesarias (<em>git</em>, <em>ssh</em>, <em>etc</em>).</p>
 </li>
 <li>
-<p><strong>Cloud Shell de Google Cloud</strong>: la consola web de Google Cloud proporciona la herramienta <strong>Cloud Shell</strong> que permite trabajar cómodamente contra GCP desde cualquier navegador web y cualquier S.O. Recuerda que Cloud Shell tiene una cuota de uso, con un límite de número de horas semanales:</p>
+<p><strong>Cloud Shell de Google Cloud</strong>: la consola web de Google Cloud proporciona la herramienta <strong>Cloud Shell</strong> que permite trabajar cómodamente contra GCP desde cualquier navegador web y cualquier S.O. Recuerda que Cloud Shell tiene una cuota de uso, con un límite de número de horas semanales (168h):</p>
 </li>
 </ul>
 </div>
@@ -192,6 +192,20 @@
 <img src="_images/cloud-shell-cuota.png" alt="cloud shell cuota">
 </div>
 <div class="title">Fig. 1. Cuota de Cloud Shell</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para ver tu cuota semanal, haz clic en <span class="image"><img src="_images/session-info-icon.png" alt="session info icon"></span> <strong>Información de la sesión</strong> y, luego, en <strong>Cuota de uso</strong>. Aparecerá un cuadro de diálogo en el que se mostrarán las horas restantes en tu cuota, la cantidad total de horas en ella y la fecha y hora en que se restablecerá la cuota.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>A continuación se explican las herramientas que debes configurar si estás usando tu máquina local, aunque probablemente algunas ya las tendrás instaladas. Si optas por trabajar en Cloud Shell, seguramente también estarán ya instaladas.</p>
@@ -327,7 +341,7 @@ Utiliza <code>sudo</code> delante de los comandos estrictamente cuando requieras
 <p>Si ya dispones de crédito en GCP, podrás usarlo ahora. En cualquier caso, para esta asignatura disponemos de un nuevo cupón educativo de 50$ por estudiante, que no necesita tarjeta de crédito para su activación. Actívalo en la dirección que encontrarás en el <a href="https://aulavirtual.ual.es/">Aula Virtual</a> de la asignatura, en la sección <strong>Area de Contenido</strong> &gt; <strong>Cupones de GCP</strong>, usando tu email <em>@inlumine.ual.es</em>.</p>
 </div>
 <div class="paragraph">
-<p>Accede a la <a href="https://console.cloud.google.com/">Consola de Google Cloud</a> y <strong>crea un nuevo proyecto</strong> GCP con el nombre <strong>cnsa2022-<em>abc123</em></strong> (sustituyendo <em>abc123</em> por tu nombre de usuario), y dale permisos al profesor. Para ello, revisa las instrucciones que vimos en la asignatura del primer cuatrimestre. El crédito del cada cupón dura 12 meses, así que este nuevo proyecto asígnalo a la cuenta de facturación de la asignatura del primer cuatrimestre, ya que es mejor consumir ese crédito porque caduca antes. Si se consume el crédito del primer cupón, simplemente tendrás que cambiar tu proyecto <strong>cnsa2022-<em>abc123</em></strong> a la nueva cuenta de facturación del nuevo cupón.</p>
+<p>Accede a la <a href="https://console.cloud.google.com/">Consola de Google Cloud</a> y <strong>crea un nuevo proyecto</strong> GCP con el nombre <strong>cnsa2024-<em>abc123</em></strong> (indicando el año correcto y sustituyendo <em>abc123</em> por tu nombre de usuario), y dale permisos al profesor. Para ello, revisa las instrucciones que vimos en la asignatura del primer cuatrimestre. El crédito del cada cupón dura 12 meses, así que este nuevo proyecto asígnalo a la cuenta de facturación de la asignatura del primer cuatrimestre, ya que es mejor consumir ese crédito porque caduca antes. Si se consume el crédito del primer cupón, simplemente tendrás que cambiar tu proyecto <strong>cnsa2024-<em>abc123</em></strong> a la nueva cuenta de facturación del nuevo cupón.</p>
 </div>
 </div>
 </div>
@@ -346,7 +360,7 @@ Utiliza <code>sudo</code> delante de los comandos estrictamente cuando requieras
 </div>
 </div>
 <div class="paragraph">
-<p>Cierra el terminal o la ventana de comandos, abre una nueva con permisos normales y comprueba que se ha instalado correctamente:author:</p>
+<p>Cierra el terminal o la ventana de comandos, abre una nueva con permisos normales y comprueba que se ha instalado correctamente:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -366,7 +380,7 @@ on windows_amd64</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_gcloud_cli_para_gcp"><a class="anchor" href="#_gcloud_cli_para_gcp"></a>4. GCloud CLI para  GCP</h2>
+<h2 id="_gcloud_cli_para_gcp"><a class="anchor" href="#_gcloud_cli_para_gcp"></a>4. GCloud CLI para GCP</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Google Cloud Command Line Interface está disponible para su instalación <a href="https://cloud.google.com/sdk/install">aquí</a>.</p>

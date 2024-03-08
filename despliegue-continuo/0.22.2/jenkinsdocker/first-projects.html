@@ -173,7 +173,7 @@
 <h2 id="_creación_del_primer_proyecto_freestyle"><a class="anchor" href="#_creación_del_primer_proyecto_freestyle"></a>Creación del primer proyecto freestyle</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Creamos el primer proyecto de Jenkins. Comprueba que Jenkins puede llamar a docker. Para ello crea un nuevo proyecto tipo freestyle.</p>
+<p>Creamos el primer proyecto de Jenkins. Comprueba que Jenkins puede llamar a Docker. Para ello crea un nuevo proyecto tipo freestyle.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
@@ -182,7 +182,7 @@
 <div class="title">Fig. 1. Nuevo proyecto, freestyle</div>
 </div>
 <div class="paragraph">
-<p>En la sección <strong>Build</strong>, añade un bloque <strong>Execute shell</strong>. Pega estos comandos:</p>
+<p>En la sección <strong>Build Steps</strong>, añade un nuevo paso,  <strong>Ejecutar linea de comandos (shell)</strong> . Pega estos comandos:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -197,18 +197,18 @@ docker -v</code></pre>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenkins-new-hello-docker-console-output.png" alt="jenkins new hello docker console output">
+<img src="_images/jenkins-new-hello-docker-console-output-2024.png" alt="jenkins new hello docker console output 2024">
 </div>
 <div class="title">Fig. 2. Build now. Resultado del build</div>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenkins-new-hello-docker-console-success.png" alt="jenkins new hello docker console success">
+<img src="_images/jenkins-new-hello-docker-console-success-2024.png" alt="jenkins new hello docker console success 2024">
 </div>
 <div class="title">Fig. 3. Salida por consola</div>
 </div>
 <div class="paragraph">
-<p>Por consola se visualiza el resultado de ejecutar los comandos dentro del contenedor. Como puedes ver, <code>git</code> y <code>java</code> están instalados, venían ya en la imagen de jenkins:lts de la que hemos partido en la definición del Dockerfile. Además, <code>docker</code> también está disponible, se ha instalado correctamente mediante la definición incluida en el Dockerfile.</p>
+<p>Por consola se visualiza el resultado de ejecutar los comandos dentro del contenedor. Como puedes ver, <code>git</code> y <code>java</code> están instalados, venían ya en la imagen  <code>jenkins:lts</code> de la que hemos partido en la definición del <code>Dockerfile</code>. Además, <code>docker</code> también está disponible, se ha instalado correctamente mediante la definición incluida en el Dockerfile. La ejecución finaliza correctamente, con el mensaje <code>Finished: SUCCESS</code>, por ello la bolita verde.</p>
 </div>
 </div>
 </div>
@@ -216,9 +216,38 @@ docker -v</code></pre>
 <h2 id="_creación_del_primer_pipeline"><a class="anchor" href="#_creación_del_primer_pipeline"></a>Creación del primer pipeline</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_pipeline_sobre_el_nodo_master"><a class="anchor" href="#_pipeline_sobre_el_nodo_master"></a>Pipeline sobre el nodo master</h3>
+<h3 id="_nodos_de_ejecución"><a class="anchor" href="#_nodos_de_ejecución"></a>Nodos de ejecución</h3>
 <div class="paragraph">
-<p>Creamos el primer proyecto de Jenkins tipo pipeline. Vamos a darle el nombre <code>hello-maven-pipeline-on-master-node</code>. Este pipeline se ejecutará sobre el nodo (<code>agent</code>) master, es decir, sobre el mismo contenedor que está ejecutando Jenkins.</p>
+<p>De forma predeterminada, Jenkins ejecuta los proyectos sobre el nodo principal (main), que es el nodo (contenedor o máquina virtual) donde se ejecuta el propio Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Puedes consultar los nodos disponibles en Jenkins en la sección <strong>Administrar Jenkins</strong> &gt; <strong>Nodos</strong>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/jenkins-admin-nodos-2024.png" alt="jenkins admin nodos 2024">
+</div>
+<div class="title">Fig. 4. Nodos disponibles en Jenkins</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Hasta ahora no hemos configurado otros nodos ni <em>clouds</em> donde ejecutar los proyectos, así que por defecto se ejecutan en el principal.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pipeline_sobre_el_nodo_principal"><a class="anchor" href="#_pipeline_sobre_el_nodo_principal"></a>Pipeline sobre el nodo principal</h3>
+<div class="paragraph">
+<p>Creamos el primer proyecto de Jenkins tipo <strong>pipeline</strong>. Vamos a darle el nombre <code>hello-maven-pipeline-on-master-node</code>. Este pipeline se ejecutará sobre el nodo (<code>agent</code>) master, es decir, sobre el mismo contenedor que está ejecutando Jenkins.</p>
 </div>
 <div class="paragraph">
 <p>Copia la siguiente definición de pipeline en el bloque <strong>Pipeline</strong>, <strong>Pipeline script</strong>.</p>
@@ -263,15 +292,15 @@ docker -v</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">[Pipeline] sh
 + java -version
-openjdk version "11.0.14" 2022-01-18
-OpenJDK Runtime Environment Temurin-11.0.14+9 (build 11.0.14+9)
-OpenJDK 64-Bit Server VM Temurin-11.0.14+9 (build 11.0.14+9, mixed mode)
+openjdk version "17.0.10" 2024-01-16
+OpenJDK Runtime Environment Temurin-17.0.10+7 (build 17.0.10+7)
+OpenJDK 64-Bit Server VM Temurin-17.0.10+7 (build 17.0.10+7, mixed mode)
 + mvn -v
-Apache Maven 3.8.4 (9b656c72d54e5bacbed989b64718c159fe39b537)
+Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)
 Maven home: /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Default_Maven
-Java version: 11.0.14, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
+Java version: 17.0.10, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
 Default locale: en, platform encoding: UTF-8
-OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</code></pre>
+OS name: "linux", version: "6.5.0-1014-gcp", arch: "amd64", family: "unix"</code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -282,13 +311,13 @@ OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</cod
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Lanzar las construcciones de proyectos en el nodo máster puede acarrear problemas de seguridad. De hecho, Jenkins avisa de que esta configuración es inadecuada, y recomienda configurar agentes independientes donde lanzar las ejecuciones de los proyectos.</p>
+<p>Lanzar las construcciones de proyectos en el nodo principal puede acarrear <strong>problemas de seguridad</strong>. De hecho, Jenkins (dependiendo de la versión) avisa de que esta configuración es inadecuada, y recomienda configurar agentes independientes donde lanzar las ejecuciones de los proyectos.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
 <img src="_images/issue-build-on-master.png" alt="issue build on master">
 </div>
-<div class="title">Fig. 4. Aviso de evitar ejecuciones en el nodo máster de Jenkins</div>
+<div class="title">Fig. 5. Aviso de evitar ejecuciones en el nodo máster de Jenkins</div>
 </div>
 </td>
 </tr>
@@ -298,7 +327,7 @@ OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</cod
 <div class="sect2">
 <h3 id="_pipeline_con_un_contenedor_como_agente"><a class="anchor" href="#_pipeline_con_un_contenedor_como_agente"></a>Pipeline con un contenedor como agente</h3>
 <div class="paragraph">
-<p>Otra alternativa es que el pipeline se ejecute, en lugar de en el nodo master, en un nodo tipo "agente" que se creará <em>ex profeso</em> a partir de un contenedor Docker disponible de DockerHub.</p>
+<p>La alternativa es que el pipeline se ejecute, en lugar de en el nodo principal, en un nodo tipo "agente" que se creará <em>ex profeso</em> a partir de un contenedor Docker disponible de DockerHub.</p>
 </div>
 <div class="paragraph">
 <p>A continuación creamos el segundo proyecto de Jenkins tipo pipeline. Vamos a darle el nombre <code>hello-maven-pipeline-on-container-node</code></p>
@@ -308,8 +337,8 @@ OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</cod
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">pipeline {
     agent {
         docker {
-            image 'maven:3.6-openjdk-8' <i class="conum" data-value="1"></i><b>(1)</b>
-            args '-v $HOME/.m2:/root/.m2'
+            image 'maven:3.9-eclipse-temurin-21-jammy' <i class="conum" data-value="1"></i><b>(1)</b>
+            args '-v $HOME/.m2:/root/.m2' <i class="conum" data-value="2"></i><b>(2)</b>
         }
     }
     stages {
@@ -329,12 +358,27 @@ OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</cod
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Entre las <a href="https://hub.docker.com/_/maven">imágenes de Maven</a> disponibles están <code>3.6-openjdk-11</code>, <code>3.6-openjdk-15</code>, etc</td>
+<td>Elige entre las <a href="https://hub.docker.com/_/maven">imágenes de Maven</a> disponibles. En este caso, se ha elegido la versión 3.9 con Java 21, que es distinta a la que hemos instalado en el nodo principal.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Mapea el volumen del host <code>$HOME/.m2</code> donde se almacenan las dependencias de Maven, para que estén disponibles en el contenedor, eliminando así la necesidad de volver a descargarlas en sucesivas ejecuciones.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Te dará error. En la máquina Jenkins, sobre el S.O. host, hay que abrir permisos en el socket de Docker para que desde dentro del contenedor Jenkins permita crear otros contenedores <em>hermanos</em>. Para ello modifica los permisos así:</p>
+<p>Te dará error al construir el proyecto.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">[Pipeline] sh
++ docker inspect -f . maven:3.9-eclipse-temurin-21-jammy
+
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/maven:3.9-eclipse-temurin-21-jammy/json": dial unix /var/run/docker.sock: connect: permission denied</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El motivo es que en la máquina Jenkins, sobre el S.O. host, hay que abrir permisos en el socket de Docker para que desde dentro del contenedor Jenkins permita crear otros contenedores <em>hermanos</em>. Para ello, mediante el terminal <code>ssh</code> modifica los permisos así:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -342,7 +386,22 @@ OS name: "linux", version: "5.11.0-1029-gcp", arch: "amd64", family: "unix"</cod
 </div>
 </div>
 <div class="paragraph">
-<p>Tras ello deben construirse correctamente. Sin embargo, abrir permisos a ese archivo supone ciertos problemas de seguridad: <em>Avoid workarounds like this which could be a big potential security threat. The result of your chmod practically gives all local users read and write permissions to the docker-socket which allows anyone to interfere with your docker images.</em> (<a href="https://serverfault.com/questions/821062/how-to-run-sudo-chmod-666-var-run-docker-sock-on-ubuntu-before-the-services">fuente</a>).</p>
+<p>Tras ello deben construirse correctamente. La nueva salida será algo así:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">[Pipeline] sh
++ java -version
+openjdk version "21.0.2" 2024-01-16 LTS
+OpenJDK Runtime Environment Temurin-21.0.2+13 (build 21.0.2+13-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.2+13 (build 21.0.2+13-LTS, mixed mode, sharing)
++ mvn -v
+Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)
+Maven home: /usr/share/maven
+Java version: 21.0.2, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.5.0-1014-gcp", arch: "amd64", family: "unix"</code></pre>
+</div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -372,13 +431,35 @@ chmod 666 /var/run/docker.sock</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Tras ello reinicia la máquina. Al volver a entrar, comprueba que el socket de Docker tiene los permisos adecuados:</p>
+<p>Tras ello reinicia la máquina.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">sudo reboot -h now</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tras ello, comprueba que el socket de Docker tiene los permisos adecuados:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">$ ls -la /var/run/docker.sock
 srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 </div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>No olvides que abrir permisos aL archivo <code>/var/run/docker.sock</code> supone ciertos problemas de seguridad: <em>Avoid workarounds like this which could be a big potential security threat. The result of your chmod practically gives all local users read and write permissions to the docker-socket which allows anyone to interfere with your docker images.</em> (<a href="https://serverfault.com/questions/821062/how-to-run-sudo-chmod-666-var-run-docker-sock-on-ubuntu-before-the-services">fuente</a>).</p>
 </div>
 </td>
 </tr>
@@ -391,7 +472,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="sect2">
 <h3 id="_usando_varios_contenedores_como_agente"><a class="anchor" href="#_usando_varios_contenedores_como_agente"></a>Usando varios contenedores como agente</h3>
 <div class="paragraph">
-<p>Es habitual tener varias tecnologías en un mismo proyecto. Por ejemplo, un repositorio puede tener tanto un back-end basado en Java como un front-end basado en JavaScript. Combinar Docker y Pipeline permite usar diferentes agentes en diferentes fases (<em>stages</em>) del pipeline:</p>
+<p>Es habitual tener varias tecnologías en un mismo proyecto. Por ejemplo, un repositorio puede tener tanto un back-end basado en Java como un front-end basado en JavaScript. Combinar Docker y Pipeline permite usar diferentes agentes en diferentes fases (<em>stages</em>) del pipeline. Crea un nuevo pipeline `hello-pipeline-multiple-containers`con el siguiente contenido:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -400,7 +481,10 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
     stages {
         stage('Back-end') {
             agent {
-                docker { image 'maven:3.8.1-adoptopenjdk-11' }
+                docker {
+                    image 'maven:3.9-eclipse-temurin-21-jammy'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
             }
             steps {
                 sh 'mvn --version'
@@ -408,7 +492,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
         }
         stage('Front-end') {
             agent {
-                docker { image 'node:16.13.1-alpine' }
+                docker { image 'node:20.11.1-alpine3.19' }
             }
             steps {
                 sh 'node --version'
@@ -417,6 +501,12 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
     }
 }</code></pre>
 </div>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/jenkins-pipeline-multiple-containers-2024.png" alt="jenkins pipeline multiple containers 2024">
+</div>
+<div class="title">Fig. 6. Pipeline con varios contenedores como agentes</div>
 </div>
 </div>
 </div>
@@ -431,7 +521,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/deploy-schema-full.png" alt="deploy schema full">
 </div>
-<div class="title">Fig. 5. Esquema de despliegue con Jenkins</div>
+<div class="title">Fig. 7. Esquema de despliegue con Jenkins</div>
 </div>
 <div class="paragraph">
 <p>Para ello, los pasos que se detallan a continuación permiten:</p>
@@ -465,7 +555,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/ssh-from-developer-to-jenkins.png" alt="ssh from developer to jenkins">
 </div>
-<div class="title">Fig. 6. Conexión SSH a la instancia Jenkins</div>
+<div class="title">Fig. 8. Conexión SSH a la instancia Jenkins</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -484,13 +574,16 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Esto crea la clave privada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy</strong></code> y una clave pública asociada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy.pub</strong></code>. Esta nueva pareja de claves la usaremos exclusivamente para el despliegue de nuestros proyectos. Al haberlos guardado en la carpeta <code>/home/ubuntu/jenkins_home/</code> los archivos están accesibles dentro del contenedor, porque recuerda que esa carpeta la habíamos mapeado con la carpeta <code>/var/jenkins_home</code> del contenedor.</p>
+<p>Esto crea la clave privada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy</strong></code> y una clave pública asociada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy.pub</strong></code>. Esta nueva pareja de claves la usaremos <strong>exclusivamente para el despliegue</strong> de nuestros proyectos.</p>
+</div>
+<div class="paragraph">
+<p>Al haberla guardado en la carpeta <code>/home/ubuntu/jenkins_home/</code> los archivos están accesibles dentro del contenedor de Jenkins, porque como recordarás, al lanzar el contenedor Jenkins esa carpeta del host la habíamos mapeado con la carpeta <code>/var/jenkins_home</code> del contenedor.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
 <img src="_images/jenkins-ls-deploy-keys.png" alt="jenkins ls deploy keys">
 </div>
-<div class="title">Fig. 7. Pareja de claves <em>id_rsa_deploy</em></div>
+<div class="title">Fig. 9. Pareja de claves <em>id_rsa_deploy</em></div>
 </div>
 </div>
 <div class="sect2">
@@ -498,8 +591,17 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="olist arabic">
 <ol class="arabic" start="6">
 <li>
-<p>Muestra el contenido de la clave pública: <code>cat /home/ubuntu/jenkins_home/.ssh/id_rsa_deploy.pub</code></p>
+<p>Muestra el contenido de la clave pública:</p>
 </li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cat /home/ubuntu/jenkins_home/.ssh/id_rsa_deploy.pub</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="7">
 <li>
 <p>Copia el contenido: con el ratón, selecciona el contenido de la clave, desde “ssh-rsa” hasta el final, y pulsa ENTER (o CTRC+C)</p>
 </li>
@@ -509,7 +611,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/jenkins-cat-public-key.png" alt="jenkins cat public key">
 </div>
-<div class="title">Fig. 8. Copia el contenido de <em>id_rsa_deploy.pub</em></div>
+<div class="title">Fig. 10. Copia el contenido de <em>id_rsa_deploy.pub</em></div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -542,13 +644,22 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/ssh-from-developer-to-deploy.png" alt="ssh from developer to deploy">
 </div>
-<div class="title">Fig. 9. Conexión SSH a la instancia Jenkins</div>
+<div class="title">Fig. 11. Conexión SSH a la instancia Jenkins</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="11">
 <li>
-<p>Edita el archivo <code>authorized_keys</code>:  <code>nano home/ubuntu/.ssh/authorized_keys</code></p>
+<p>Edita el archivo <code>authorized_keys</code>:</p>
 </li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>nano /home/ubuntu/.ssh/authorized_keys</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="12">
 <li>
 <p>Ese archivo ya tenía una clave pública, la correspondiente a tu pareja de claves personal que inyectamos en la creación de la instancia con Terraform (por eso has podido conectar por ssh a esa máquina). Pega el contenido de la clave pública de despliegue. Ahora debe tener 2 claves públicas.</p>
 </li>
@@ -567,7 +678,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/jenkins-ssh-to-deploy.png" alt="jenkins ssh to deploy">
 </div>
-<div class="title">Fig. 10. Conexión SSH desde la instancia Jenkins a la de despliegue</div>
+<div class="title">Fig. 12. Conexión SSH desde la instancia Jenkins a la de despliegue</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="14">
@@ -595,6 +706,17 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <li>
 <p><code>ssh ubuntu@<em>instancia_deploy</em> -i /var/jenkins_home/.ssh/id_rsa_deploy</code> es el comando a ejecutar en el contenedor. En este caso, <code>ssh</code> con el parámetro <code>-i &#8230;&#8203;</code> para indica la clave privada que debe usar para conectar.</p>
 </li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Antes de ejecutar el comando, modifica <code><em>instancia_deploy</em></code> por el nombre DNS de tu instancia de despliegue.</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Recuerda que <code>/var/jenkins_home</code> es la carpeta HOME del usuario <em>jenkins</em> dentro del contenedor, y <em>jenkins</em> es el usuario del contenedor que ejecuta Jenkins.</p>
 </li>
@@ -611,28 +733,57 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/ssh-host-autentication.png" alt="ssh host autentication">
 </div>
-<div class="title">Fig. 11. Validar la clave del host: <strong>yes</strong></div>
+<div class="title">Fig. 13. Validar la clave del host: <strong>yes</strong></div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="16">
 <li>
-<p>Si todo ha ido bien, la conexión se ha debido realizar. Sal con <code>exit</code>. Si no ha sido así, verifica que la ruta al archivo de la clave privada es correcta, y que el nombre de la máquina de despliegue es correcto.</p>
-</li>
-<li>
-<p>Comprueba que la clave de host de la máquina de destino (despliegue) se ha guardado en la máquina origen (jenkins) en el archivo <code>~/.ssh/known_hosts</code> del usuario que ha ejecutado el comando ssh, en nuestro caso, del usuario jenkins de contenedor: <code>docker exec -it jenkins-docker cat /var/jenkins_home/.ssh/known_hosts</code></p>
+<p>Si todo ha ido bien, la conexión se ha debido realizar. Puedes comprobarlo porque en el <code>prompt</code> te aparecerá que estás en la máquina de despliegue. Sal con <code>exit</code>. Ahora el <code>prompt</code> te muestra que estás en la máquina Jenkins.</p>
 </li>
 </ol>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
+<img src="_images/ssh-host-connection-deploy-exit.png" alt="ssh host connection deploy exit">
+</div>
+<div class="title">Fig. 14. Conexión correcta</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si no ha correcto, verifica que la ruta al archivo de la clave privada es correcta, y que el nombre de la máquina de despliegue es correcto.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="17">
+<li>
+<p>Comprueba que la clave de host de la máquina de destino (despliegue) se ha guardado en la máquina origen (jenkins) en el archivo <code>~/.ssh/known_hosts</code> del usuario que ha ejecutado el comando ssh, en nuestro caso, del usuario jenkins de contenedor:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker exec -it jenkins-docker cat /var/jenkins_home/.ssh/known_hosts</code></pre>
+</div>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
 <img src="_images/ssh-known_hosts.png" alt="ssh known hosts">
 </div>
-<div class="title">Fig. 12. Contenido del archivo <strong>known_hosts</strong> en el contenedor</div>
+<div class="title">Fig. 15. Contenido del archivo <strong>known_hosts</strong> en el contenedor</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="18">
 <li>
-<p>Puedes comprobar también el contenido de <em>known_hosts</em> en el archivo <code>/home/ubuntu/jenkins_home/.ssh/known_hosts</code>, ya que recuerda que hay un volumen mapeado entre la carpeta local <code>/home/ubuntu/jenkins_home</code> y la carpeta del contenedor <code>/var/jenkins_home</code>.</p>
+<p>Puedes comprobarlo también mostrando el contenido de <em>known_hosts</em> en el archivo <code>/home/ubuntu/jenkins_home/.ssh/known_hosts</code>. Ambos coinciden, recuerda que hay un volumen mapeado entre la carpeta local <code>/home/ubuntu/jenkins_home</code> y la carpeta del contenedor <code>/var/jenkins_home</code>.</p>
 </li>
 </ol>
 </div>
@@ -640,7 +791,7 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 <div class="content">
 <img src="_images/ssh-known_hosts-local.png" alt="ssh known hosts local">
 </div>
-<div class="title">Fig. 13. Contenido del archivo <strong>known_hosts</strong> en la carpeta local</div>
+<div class="title">Fig. 16. Contenido del archivo <strong>known_hosts</strong> en la carpeta local</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="19">
@@ -669,18 +820,18 @@ srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenksin-hello-docker-ssh-to-deploy.png" alt="jenksin hello docker ssh to deploy">
+<img src="_images/jenkins-hello-docker-ssh-to-deploy.png" alt="jenkins hello docker ssh to deploy">
 </div>
-<div class="title">Fig. 14. Modificación del proyecto para que ejecute un comando sobre la instancia de despliegue</div>
+<div class="title">Fig. 17. Modificación del proyecto para que ejecute un comando sobre la instancia de despliegue</div>
 </div>
 <div class="paragraph">
 <p>Tras ejecutar el proyecto en Jenkins, el resultado debe ser correcto.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenksin-hello-docker-ssh-to-deploy-output.png" alt="jenksin hello docker ssh to deploy output">
+<img src="_images/jenkins-hello-docker-ssh-to-deploy-output-2024.png" alt="jenkins hello docker ssh to deploy output 2024">
 </div>
-<div class="title">Fig. 15. Salida por consola. El comando se ha ejecutado correctamente.</div>
+<div class="title">Fig. 18. Salida por consola. El comando se ha ejecutado correctamente.</div>
 </div>
 </div>
 </div>

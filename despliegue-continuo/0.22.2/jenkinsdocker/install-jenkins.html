@@ -459,10 +459,10 @@ chmod 777 ~/jenkins_home</code></pre>
 <h2 id="_instalación_de_plugins_adicionales"><a class="anchor" href="#_instalación_de_plugins_adicionales"></a>Instalación de plugins adicionales</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vamos a instalar varios plugins: NodeJs, GitHub integration, Docker Pipeline, Warnings Next Generation, Jacoco, Code Coverage API, <a href="https://plugins.jenkins.io/google-container-registry-auth">Google Container Registry Auth</a>.</p>
+<p>Vamos a instalar varios plugins: NodeJs, GitHub integration, Docker Pipeline, Warnings (Next Generation), JaCoCo, Coverage, <a href="https://plugins.jenkins.io/google-container-registry-auth">Google Container Registry Auth</a>.</p>
 </div>
 <div class="paragraph">
-<p>Haz clic en <em>Manage Jenkins</em> &gt; <em>Manage Plugins</em>. En la pestaña <em>Available</em> busca <em>Github integration</em>, seleccionaló y pulsa en <em>Download now and install after restart</em>.</p>
+<p>Haz clic en <em>Manage Jenkins</em> &gt; <em>Manage Plugins</em>. En la pestaña <em>Available</em> busca <em>Github integration</em>, seleccionalo y pulsa en <em>Download now and install after restart</em>.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
@@ -471,7 +471,7 @@ chmod 777 ~/jenkins_home</code></pre>
 <div class="title">Fig. 8. Instalación del plugin Github integration</div>
 </div>
 <div class="paragraph">
-<p>Repite los pasos para los plugins <em>Green Balls</em>, <em>NodeJS</em> y <em>Docker Pipeline</em>.</p>
+<p>Repite los pasos para los plugins el resto de plugins.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
@@ -491,7 +491,7 @@ chmod 777 ~/jenkins_home</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuración_las_tools_en_jenkins"><a class="anchor" href="#_configuración_las_tools_en_jenkins"></a>Configuración las tools en Jenkins</h2>
+<h2 id="_configuración_las_tools_en_jenkins"><a class="anchor" href="#_configuración_las_tools_en_jenkins"></a>Configuración las Tools en Jenkins</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Tras la instalación del plugin <a href="https://plugins.jenkins.io/nodejs/"><em>NodeJS</em></a>, es necesario realizar la siguiente configuración:</p>
@@ -502,25 +502,25 @@ chmod 777 ~/jenkins_home</code></pre>
 <p>Ve a <em>Manage Jenkins</em>, <em>Global Tool configuration</em>.</p>
 </li>
 <li>
-<p>En <strong>NodeJS</strong>, añade un instalador (se recomienda la última versión disponible). Dale por nombre "nodejs" y marca instalar automáticamente.</p>
+<p>En <strong>NodeJS</strong>, añade un instalador (se recomienda la última versión <em>lts</em> disponible). Dale por nombre "nodejs lts" y marca instalar automáticamente.</p>
 </li>
 <li>
-<p>Guarda los cambios.</p>
+<p>Guarda los cambios con <em>Save</em>.</p>
 </li>
 </ol>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenkins-tool-nodejs.png" alt="jenkins tool nodejs">
+<img src="_images/jenkins-tool-nodejs-lts.png" alt="jenkins tool nodejs lts">
 </div>
 <div class="title">Fig. 11. Configuración de herramienta NodeJS</div>
 </div>
 <div class="paragraph">
-<p>De la misma forma, instala la última versión de Maven.</p>
+<p>De la misma forma, instala la última versión de Maven. En este caso dale el nombre <em>Default Maven</em> y marca instalar automáticamente.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="_images/jenkins-tool-maven.png" alt="jenkins tool maven">
+<img src="_images/jenkins-tool-maven-39.png" alt="jenkins tool maven 39">
 </div>
 <div class="title">Fig. 12. Configuración de herramienta Maven</div>
 </div>

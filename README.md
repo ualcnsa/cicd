@@ -26,6 +26,18 @@ Verify the antora command is now available by running:
 ```
 npx antora -v
 ```
+
+- Install Antora (v.2024):  https://www.npmjs.com/package/@antora/cli#how-to-install
+```
+npm i -g @antora/cli
+npm i -g @antora/site-generator
+antora -v
+```
+- Run Antora (v.2024):
+```
+antora local-antora-playbook.yml
+```
+
 - Install extensions
   - Install search powered: `npm i @antora/lunr-extension`
   - Install the http-server package *globally* using npm: `npm i -g http-server`  
@@ -71,3 +83,18 @@ Install the http-server package globally using npm: `npm i -g http-server`
 
 ## Sort and hide components and versions
  - Sort components: https://blog.yuzutech.fr/sort-antora-components/
+
+
+## Upgrade en Windows (2024)
+
+```
+choco upgrade -y nvm
+nvm install --lts
+nvm use 20.11.1
+node -v
+
+npm i -g antora
+antora -v
+npm install --global http-server
+
+```

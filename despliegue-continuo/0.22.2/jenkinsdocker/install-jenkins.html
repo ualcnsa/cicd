@@ -12,13 +12,10 @@
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://ualcnsa.github.io/cicd">CNSA</a>
-      <div class="navbar-item search hide-for-print">
-        <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs">
-        </div>
+      <div class="navbar-item">
+        <a href="https://ualcnsa.github.io/cicd">CNSA</a>
       </div>
-      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+      <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
         <span></span>
@@ -26,27 +23,10 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" autofocus>
           </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
-          </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
         </div>
       </div>
     </div>
@@ -133,42 +113,44 @@
 </ul>
   </nav>
 </div>
+
+
 <div class="nav-panel-explore" data-panel="explore">
-  <div class="context">
-    <span class="title">Despliegue continuo con Jenkins</span>
-    <span class="version">0.22.2</span>
-  </div>
+    <div class="context">
+      <span class="title">Despliegue continuo con Jenkins</span>
+      <span class="version">0.22.2</span>
+    </div>
   <ul class="components">
-    <li class="component">
-      <div class="title"><a href="../../../github-actions/0.22/index.html">Despliegue continuo con GitHub Actions</a></div>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../../github-actions/0.22/index.html">0.22-beta.1</a>
-        </li>
-      </ul>
-    </li>
-    <li class="component is-current">
-      <div class="title"><a href="../../0.25.0/index.html">Despliegue continuo con Jenkins</a></div>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../0.25.0/index.html">0.25.0</a>
-        </li>
-        <li class="version">
-          <a href="../../0.24.0/index.html">0.24.0</a>
-        </li>
-        <li class="version is-current">
-          <a href="../index.html">0.22.2</a>
-        </li>
-      </ul>
-    </li>
-    <li class="component">
-      <div class="title"><a href="../../../selenium-testing/0.22.0/index.html">Pruebas de Aceptación (e2e) con Selenium</a></div>
-      <ul class="versions">
-        <li class="version is-latest">
-          <a href="../../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
-        </li>
-      </ul>
-    </li>
+      <li class="component is-current">
+        <span class="title">Despliegue continuo con Jenkins</span>
+        <ul class="versions">
+            <li class="version">
+              <a href="../../0.25.0/index.html">0.25.0</a>
+            </li>
+            <li class="version">
+              <a href="../../0.24.0/index.html">0.24.0</a>
+            </li>
+            <li class="version is-current">
+              <a href="../index.html">0.22.2</a>
+            </li>
+        </ul>
+      </li>
+      <li class="component">
+        <span class="title">Pruebas de Aceptación (e2e) con Selenium</span>
+        <ul class="versions">
+            <li class="version">
+              <a href="../../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
+            </li>
+        </ul>
+      </li>
+      <li class="component">
+        <span class="title">Despliegue continuo con GitHub Actions</span>
+        <ul class="versions">
+            <li class="version">
+              <a href="../../../github-actions/0.22/index.html">0.22-beta.1</a>
+            </li>
+        </ul>
+      </li>
   </ul>
 </div>
     </div>

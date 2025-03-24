@@ -4,18 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Instalación y configuración de Jenkins :: CNSA</title>
-    <link rel="canonical" href="https://ualcnsa.github.io/cicd/despliegue-continuo/0.22.2/jenkinsdocker/install-jenkins.html">
-    <meta name="generator" content="Antora 3.0.1">
+    <link rel="canonical" href="https://ualcnsa.github.io/cicd/despliegue-continuo/0.25.0/jenkinsdocker/install-jenkins.html">
+    <meta name="generator" content="Antora 3.1.10">
     <link rel="stylesheet" href="../../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
-      <div class="navbar-item">
-        <a href="https://ualcnsa.github.io/cicd">CNSA</a>
+      <a class="navbar-item" href="https://ualcnsa.github.io/cicd">CNSA</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
       </div>
-      <button class="navbar-burger" data-target="topbar-nav">
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
         <span></span>
         <span></span>
         <span></span>
@@ -23,10 +26,27 @@
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item search hide-for-print">
-          <div id="search-field" class="field">
-            <input id="search-input" type="text" placeholder="Search the docs" autofocus>
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
           </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
         </div>
       </div>
     </div>
@@ -113,38 +133,42 @@
 </ul>
   </nav>
 </div>
-
-
 <div class="nav-panel-explore" data-panel="explore">
-    <div class="context">
-      <span class="title">Despliegue continuo con Jenkins</span>
-      <span class="version">0.22.2</span>
-    </div>
+  <div class="context">
+    <span class="title">Despliegue continuo con Jenkins</span>
+    <span class="version">0.22.2</span>
+  </div>
   <ul class="components">
-      <li class="component is-current">
-        <span class="title">Despliegue continuo con Jenkins</span>
-        <ul class="versions">
-            <li class="version is-current">
-              <a href="../index.html">0.22.2</a>
-            </li>
-        </ul>
-      </li>
-      <li class="component">
-        <span class="title">Pruebas de Aceptación (e2e) con Selenium</span>
-        <ul class="versions">
-            <li class="version">
-              <a href="../../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
-            </li>
-        </ul>
-      </li>
-      <li class="component">
-        <span class="title">Despliegue continuo con GitHub Actions</span>
-        <ul class="versions">
-            <li class="version">
-              <a href="../../../github-actions/0.22/index.html">0.22-beta.1</a>
-            </li>
-        </ul>
-      </li>
+    <li class="component">
+      <div class="title"><a href="../../../github-actions/0.22/index.html">Despliegue continuo con GitHub Actions</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../github-actions/0.22/index.html">0.22-beta.1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <div class="title"><a href="../../0.25.0/index.html">Despliegue continuo con Jenkins</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../0.25.0/index.html">0.25.0</a>
+        </li>
+        <li class="version">
+          <a href="../../0.24.0/index.html">0.24.0</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">0.22.2</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../selenium-testing/0.22.0/index.html">Pruebas de Aceptación (e2e) con Selenium</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
     </div>
@@ -153,7 +177,7 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../index.html" class="home-link"></a>
+  <a href="../../0.25.0/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Despliegue continuo con Jenkins</a></li>
@@ -161,7 +185,15 @@
     <li><a href="install-jenkins.html">Instalación y configuración de Jenkins</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/ualjjcanada/despliegue-continuo/edit/v.0.22/docs/modules/jenkinsdocker/pages/install-jenkins.adoc">Edit this Page</a></div>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">0.22.2</button>
+  <div class="version-menu">
+    <a class="version" href="../../0.25.0/jenkinsdocker/install-jenkins.html">0.25.0</a>
+    <a class="version" href="../../0.24.0/jenkinsdocker/install-jenkins.html">0.24.0</a>
+    <a class="version is-current" href="install-jenkins.html">0.22.2</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/despliegue-continuo/edit/v.0.22/docs/modules/jenkinsdocker/pages/install-jenkins.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

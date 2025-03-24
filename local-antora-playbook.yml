@@ -6,7 +6,7 @@ site:
   start_page: despliegue-continuo::index.adoc
 content:
   sources:
-  - url: git@github.com:ualjjcanada/despliegue-continuo.git
+  - url: git@github.com:ualcnsa/despliegue-continuo.git
     branches: [v.0.25, v.0.24, v.0.22]
     start_path: docs
   - url: git@github.com:ualcnsa/selenium-testing.git

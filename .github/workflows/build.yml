@@ -40,8 +40,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Build Antora project
-        run: |
-          cp -R node_modules/@antora/lunr-extension/supplemental_ui/* supplemental-ui/
+        run: 
           npx antora local-antora-playbook.yml --fetch
 
       # Uploads the generated site

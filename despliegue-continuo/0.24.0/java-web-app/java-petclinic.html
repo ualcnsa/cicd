@@ -147,6 +147,9 @@
         <span class="title">Despliegue continuo con GitHub Actions</span>
         <ul class="versions">
             <li class="version">
+              <a href="../../../github-actions/0.23/index.html">0.23-beta.1</a>
+            </li>
+            <li class="version">
               <a href="../../../github-actions/0.22/index.html">0.22-beta.1</a>
             </li>
         </ul>
@@ -239,6 +242,20 @@ java -jar target/*.jar <i class="conum" data-value="2"></i><b>(2)</b></code></pr
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para que la construcción ejecute correctamente todos los tests debes tener docker instalado y funcionando, ya que en el proceso descarga los contenedores de MySQL y PostgreSQL para ejecutar los tests de integración. Si no tienes docker, puedes saltarte los tests de integración con el comando <code>./mvnw package -Dtest=!PostgresIntegrationTests*</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="imageblock text-center thumb">
 <div class="content">
 <img src="_images/petclinic-homepage.png" alt="petclinic homepage">
@@ -249,7 +266,7 @@ java -jar target/*.jar <i class="conum" data-value="2"></i><b>(2)</b></code></pr
 <p>En su configuración predeterminada, Petclinic utiliza una base de datos en memoria (<a href="http://www.h2database.com/html/main.html">H2</a>) que se inicia con datos predeterminados, y los nuevos datos que se guarden se pierden al reiniciar la aplicación.</p>
 </div>
 <div class="paragraph">
-<p>En caso de necesitar persistencia de los datos, PetClinic también está preconfigurada para usar MySql. Para cambiar el tipo de base de datos, la aplicación debe ejecutarse con un perfil de MySql: <code>spring.profiles.active=mysql</code>.</p>
+<p>En caso de necesitar persistencia de los datos, PetClinic también está preconfigurada para usar MySQL. Para cambiar el tipo de base de datos, la aplicación debe ejecutarse con un perfil de MySQL: <code>spring.profiles.active=mysql</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -257,15 +274,15 @@ java -jar target/*.jar <i class="conum" data-value="2"></i><b>(2)</b></code></pr
 </div>
 </div>
 <div class="paragraph">
-<p>Recuerda que para ejecutarla en este modo, debes tener un MySql funcionando en local, o bien lanzar MySql como contenedor con <strong>docker</strong> o con <strong>docker-compose</strong>. Existe un archivo <code>docker-compose.yml</code> <a href="https://github.com/spring-projects/spring-petclinic/blob/main/docker-compose.yml">disponible en el repositorio</a> del proyecto PetClinic, por tanto puedes iniciar MySql así:</p>
+<p>Recuerda que para ejecutarla en este modo, debes tener un MySQL funcionando en local, o bien lanzar MySQL como contenedor con <strong>docker</strong> o con <strong>docker-compose</strong>. Existe un archivo <code>docker-compose.yml</code> <a href="https://github.com/spring-projects/spring-petclinic/blob/main/docker-compose.yml">disponible en el repositorio</a> del proyecto PetClinic, por tanto puedes iniciar MySQL así:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker-compose up -d</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker compose up mysql -d</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El archivo <code>docker-compose.yml</code> que permite iniciar MySql y Postgres puedes consultarlo en la carpeta raíz del proyecto.</p>
+<p>El archivo <code>docker-compose.yml</code> que permite iniciar MySQL o PostgreSQL puedes consultarlo en la carpeta raíz del proyecto.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -284,7 +301,7 @@ java -jar target/*.jar <i class="conum" data-value="2"></i><b>(2)</b></code></pr
 <div class="title">Fig. 2. Aviso Dev Containers en Visual Studio Code</div>
 </div>
 <div class="paragraph">
-<p>Pero si aceptas, se descargará una imagen de Docker con un entorno de desarrollo preconfigurado para trabajar con el proyecto, así como las imágenes de MySql y Postgres. En ese caso, al lanzar la construcción del proyecto, los tests de integración se ejecutan sobre las bases de datos MySql y Postgres.</p>
+<p>Pero si aceptas, se descargará una imagen de Docker con un entorno de desarrollo preconfigurado para trabajar con el proyecto, así como las imágenes de MySQL y PostgreSQL . En ese caso, al lanzar la construcción del proyecto, los tests de integración se ejecutan sobre las bases de datos MySQL y Postgres.</p>
 </div>
 </td>
 </tr>

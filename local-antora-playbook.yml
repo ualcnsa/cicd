@@ -13,7 +13,7 @@ content:
     branches: v.0.22
     start_path: docs
   - url: git@github.com:ualcnsa/github-actions.git
-    branches: v.0.22
+    branches: [v.0.26, v.0.22]
     start_path: docs
 ui:
   bundle:

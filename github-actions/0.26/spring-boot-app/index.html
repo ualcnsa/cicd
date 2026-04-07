@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Despliegue continuo con GitHub Actions :: CNSA</title>
+    <title>Aplicación en Spring Boot :: CNSA</title>
+    <link rel="canonical" href="https://ualcnsa.github.io/cicd/github-actions/0.26/spring-boot-app/index.html">
     <meta name="generator" content="Antora 3.1.10">
-    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/site.css">
   </head>
   <body class="article">
 <header class="header">
@@ -32,32 +33,58 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="github-actions" data-version="0.23">
+<div class="nav-container" data-component="github-actions" data-version="0.26">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
     <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
-    <h3 class="title"><a href="index.html">Despliegue continuo con GitHub Actions</a></h3>
+    <h3 class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></h3>
 <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Introducción</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../first-steps/index.html">Primeros pasos con GitHub Actions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/first-project.html">Comenzando con GitHub Actions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../node-app/index.html">Aplicación en NodeJS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../node-app/node-hello.html"><em>Hola mundo</em> en NodeJS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="index.html">Introducción</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="first-steps/index.html">Primeros pasos con GitHub Actions</a>
+    <a class="nav-link" href="index.html">Aplicación en Spring Boot</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="first-steps/first-project.html">Comenzando con GitHub Actions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="first-steps/antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+    <a class="nav-link" href="spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
   </li>
 </ul>
   </li>
@@ -67,36 +94,10 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="node-app/index.html">Aplicación en NodeJS</a>
+    <a class="nav-link" href="../ionic-app/index.html">Aplicación Ionic (Angular)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="node-app/node-hello.html"><em>Hola mundo</em> en NodeJS</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="spring-boot-app/index.html">Aplicación en Spring Boot</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="spring-boot-app/spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="ionic-app/index.html">Aplicación Ionic (Angular)</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="ionic-app/ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
+    <a class="nav-link" href="../ionic-app/ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
   </li>
 </ul>
   </li>
@@ -110,20 +111,20 @@
 <div class="nav-panel-explore" data-panel="explore">
     <div class="context">
       <span class="title">Despliegue continuo con GitHub Actions</span>
-      <span class="version">0.23-beta.1</span>
+      <span class="version">0.26</span>
     </div>
   <ul class="components">
       <li class="component">
         <span class="title">Despliegue continuo con Jenkins</span>
         <ul class="versions">
             <li class="version">
-              <a href="../../despliegue-continuo/v.2025/index.html">v.2025</a>
+              <a href="../../../despliegue-continuo/v.2025/index.html">v.2025</a>
             </li>
             <li class="version">
-              <a href="../../despliegue-continuo/0.24.0/index.html">0.24.0</a>
+              <a href="../../../despliegue-continuo/0.24.0/index.html">0.24.0</a>
             </li>
             <li class="version">
-              <a href="../../despliegue-continuo/0.22.2/index.html">0.22.2</a>
+              <a href="../../../despliegue-continuo/0.22.2/index.html">0.22.2</a>
             </li>
         </ul>
       </li>
@@ -131,7 +132,7 @@
         <span class="title">Pruebas de Aceptación (e2e) con Selenium</span>
         <ul class="versions">
             <li class="version">
-              <a href="../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
+              <a href="../../../selenium-testing/0.22.0/index.html">0.22.0-beta.1</a>
             </li>
         </ul>
       </li>
@@ -139,10 +140,10 @@
         <span class="title">Despliegue continuo con GitHub Actions</span>
         <ul class="versions">
             <li class="version is-current">
-              <a href="index.html">0.23-beta.1</a>
+              <a href="../index.html">0.26</a>
             </li>
             <li class="version">
-              <a href="../0.22/index.html">0.22-beta.1</a>
+              <a href="../../0.22/index.html">0.22-beta.1</a>
             </li>
         </ul>
       </li>
@@ -154,60 +155,45 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="../../despliegue-continuo/v.2025/index.html" class="home-link"></a>
+  <a href="../../../despliegue-continuo/v.2025/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="index.html">Despliegue continuo con GitHub Actions</a></li>
-    <li><a href="index.html">Introducción</a></li>
+    <li><a href="../index.html">Despliegue continuo con GitHub Actions</a></li>
+    <li><a href="index.html">Aplicación en Spring Boot</a></li>
   </ul>
 </nav>
 <div class="page-versions">
-  <button class="version-menu-toggle" title="Show other versions of page">0.23-beta.1</button>
+  <button class="version-menu-toggle" title="Show other versions of page">0.26</button>
   <div class="version-menu">
-    <a class="version is-current" href="index.html">0.23-beta.1</a>
-    <a class="version" href="../0.22/index.html">0.22-beta.1</a>
+    <a class="version is-current" href="index.html">0.26</a>
+    <a class="version is-missing" href="../../0.22/index.html">0.22-beta.1</a>
   </div>
 </div>
-<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/v.0.26/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/v.0.26/docs/modules/spring-boot-app/pages/index.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Despliegue continuo con GitHub Actions</h1>
-<div class="paragraph">
-<p>Computación en la Nube, Servicios y Aplicaciones. Francisco García &lt;<a href="mailto:paco.garcia@ual.es">paco.garcia@ual.es</a>&gt;, Joaquín Cañadas &lt;<a href="mailto:jjcanada@ual.es">jjcanada@ual.es</a>&gt;</p>
-</div>
-<div class="paragraph">
-<p><em>Version</em> <strong>0.23-beta.1</strong></p>
-</div>
+<h1 class="page">Aplicación en Spring Boot</h1>
 <div class="exampleblock">
 <div class="title">Objetivos</div>
 <div class="content">
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Como construir y desplegar aplicaciones web Spring Boot con GitHub Actions.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Crear una infraestructura de CI/CD en GitHub mediante el uso de GitHub Actions</p>
+<p>Definir un flujo de trabajo para automatizar las etapas más habituales en CI/CD.</p>
 </li>
 <li>
-<p>Diseñar flujos de trabajo para la construcción y despliegue automatizado de portales de documentación y aplicaciones NodeJs</p>
+<p>Desplegar la aplicación Spring Boot de forma nativa mediante archivos JAR.</p>
 </li>
-</ul>
+</ol>
 </div>
 </div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Realización y entrega</div>
-<div class="paragraph">
-<p>La realización de estas actividades se realizará de forma <strong>individual</strong>.
-La entrega será mediante el envío de un informe y el acceso al profesor a los servicios configurados por cada estudiante, para la revisión y evaluación de los mismos.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Esta es la versión <strong>0.23-beta.1</strong> de este documento.</p>
 </div>
 </article>
   </div>
@@ -217,11 +203,11 @@ La entrega será mediante el envío de un informe y el acceso al profesor a los 
   <p>This page was built using the Antora default UI.</p>
   <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
 </footer>
-<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
-<script async src="../../_/js/vendor/highlight.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="../../_/js/vendor/lunr-languages.js"></script>
-<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
-<script async src="../../search-index.js"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/lunr-languages.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
   </body>
 </html>
